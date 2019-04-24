@@ -75,9 +75,14 @@ func Connect(host string, port int, auth string,
 	} else {
 		socket, err = thrift.NewTSocket(fmt.Sprintf("%s:%d", host, port))
 	}
-
-	if err = socket.Open(); err != nil {
+	if err != nil {
 		return
+	}
+
+	if !socket.IsOpen() {
+		if err = socket.Open(); err != nil {
+			return
+		}
 	}
 
 	var transport thrift.TTransport
@@ -163,9 +168,12 @@ func Connect(host string, port int, auth string,
 		} else {
 			panic("Unrecognized auth")
 		}
-		if err = transport.Open(); err != nil {
-			return
+		if !transport.IsOpen() {
+			if err = transport.Open(); err != nil {
+				return
+			}
 		}
+
 	} else {
 		panic(fmt.Sprintf("Unrecognized transport mode %s", configuration.TransportMode))
 	}

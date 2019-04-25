@@ -25,25 +25,12 @@
   pruneopts = "UT"
   revision = "598f9f3b287808b0e16f37ebfad6c1bd09737a67"
 
-[[projects]]
-  branch = "master"
-  digest = "1:68eb07acedcd8a2351ac852675147b2e5844aa6f84f3f18a522aa1a65db80515"
-  name = "github.com/ef-stripe/gohive"
-  packages = [
-    ".",
-    "hiveserver",
-  ]
-  pruneopts = "UT"
-  revision = "a4523246ced0057994092aa45f1f6c9aad9bae8f"
-
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
     "git.apache.org/thrift.git/lib/go/thrift",
     "github.com/beltran/gosasl",
-    "github.com/ef-stripe/gohive",
-    "github.com/ef-stripe/gohive/hiveserver",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
